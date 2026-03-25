@@ -2,7 +2,6 @@ const loader = document.getElementById("loader");
 const envelopeSection = document.getElementById("envelopeSection");
 const invite = document.getElementById("invite");
 const openIntro = document.getElementById("openIntro");
-const openInvite = document.getElementById("openInvite");
 const envelope = document.getElementById("envelope");
 const countdown = document.getElementById("countdown");
 const rsvpForm = document.getElementById("rsvpForm");
@@ -31,15 +30,15 @@ function showInvite() {
 
 openIntro.addEventListener("click", () => {
   showEnvelope();
-});
 
-openInvite.addEventListener("click", () => {
-  envelope.classList.add("open");
-  window.scrollTo(0, 0);
+  setTimeout(() => {
+    envelope.classList.add("open");
+  }, 500);
 
   setTimeout(() => {
     showInvite();
-  }, 1200);
+    envelope.classList.remove("open");
+  }, 1900);
 });
 
 const targetDate = new Date("December 18, 2026 16:00:00").getTime();
@@ -57,7 +56,7 @@ function updateCountdown() {
 
   const days = Math.floor(distance / (1000 * 60 * 60 * 24));
   const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((distance / (1000 * 60) ) % 60);
+  const minutes = Math.floor((distance / (1000 * 60)) % 60);
   const seconds = Math.floor((distance / 1000) % 60);
 
   countdown.innerHTML = `
