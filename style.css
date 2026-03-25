@@ -1,257 +1,98 @@
-:root {
-  --brown: #7a5c46;
-  --emerald: #2f5d50;
-  --cream: #f7f3ed;
-  --white: #ffffff;
-  --text: #2c2c2c;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jose & Jazmin</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Screen 1 -->
+  <section id="loader" class="screen">
+    <div class="center-box">
+      <p class="small">A special invitation for you</p>
+      <button id="openIntro" class="btn" type="button">Open</button>
+    </div>
+  </section>
 
-* {
-  box-sizing: border-box;
-}
+  <!-- Screen 2 -->
+  <section id="envelopeSection" class="screen hidden">
+    <div class="envelope-wrap">
+      <div id="envelope" class="envelope">
+        <div class="flap"></div>
+        <div class="seal">J&amp;J</div>
 
-html {
-  scroll-behavior: smooth;
-}
+        <div class="letter">
+          <h1>Jose &amp; Jazmin</h1>
+          <p>Save the Date</p>
+          <p>December 18, 2026</p>
+          <p>Lynwood, California</p>
+        </div>
+      </div>
 
-body {
-  margin: 0;
-  font-family: Georgia, serif;
-  background: var(--cream);
-  color: var(--text);
-  overflow-x: hidden;
-}
+      <button id="openInvite" class="btn" type="button">Open Invitation</button>
+    </div>
+  </section>
 
-.hidden {
-  display: none;
-}
+  <!-- Screen 3 -->
+  <main id="invite" class="hidden">
+    <header class="hero">
+      <div class="overlay">
+        <h1>Jose &amp; Jazmin</h1>
+        <p>We’re getting married</p>
+        <p>December 18, 2026 · Lynwood, California</p>
+      </div>
+    </header>
 
-.screen {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  padding: 24px 16px;
-}
+    <section class="card">
+      <h2>Countdown</h2>
+      <div id="countdown" class="countdown"></div>
+    </section>
 
-.center-box {
-  text-align: center;
-  width: 100%;
-  max-width: 500px;
-}
+    <section class="card">
+      <h2>Location</h2>
+      <p>Lynwood, California</p>
+      <a class="btn small-btn" href="https://maps.google.com" target="_blank" rel="noopener noreferrer">Open Map</a>
+    </section>
 
-.small {
-  font-size: 1rem;
-  margin-bottom: 16px;
-  color: var(--brown);
-}
+    <section class="card">
+      <h2>Schedule</h2>
+      <ul>
+        <li>4:00 PM – Ceremony</li>
+        <li>5:00 PM – Cocktail Hour</li>
+        <li>6:00 PM – Dinner</li>
+        <li>8:00 PM – Dancing</li>
+      </ul>
+    </section>
 
-.btn {
-  background: var(--emerald);
-  color: white;
-  border: none;
-  padding: 12px 22px;
-  border-radius: 999px;
-  font-size: 1rem;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
-  min-height: 48px;
-  min-width: 220px;
-}
+    <section class="card">
+      <h2>FAQ</h2>
+      <details>
+        <summary>Can I bring a guest?</summary>
+        <p>Please check your invitation details.</p>
+      </details>
+      <details>
+        <summary>What should I wear?</summary>
+        <p>Elegant attire in earthy tones.</p>
+      </details>
+    </section>
 
-.envelope-wrap {
-  text-align: center;
-  width: 100%;
-  max-width: 420px;
-}
+    <section class="card">
+      <h2>RSVP</h2>
+      <form id="rsvpForm">
+        <input type="text" placeholder="Your name" required />
+        <input type="email" placeholder="Email" />
+        <select required>
+          <option value="">Will you attend?</option>
+          <option>Yes, I will attend</option>
+          <option>Sorry, I can’t attend</option>
+        </select>
+        <button class="btn small-btn" type="submit">Send RSVP</button>
+      </form>
+      <p id="rsvpMessage"></p>
+    </section>
+  </main>
 
-.envelope {
-  position: relative;
-  width: min(90vw, 320px);
-  height: 210px;
-  margin: 0 auto 20px;
-  background: linear-gradient(180deg, #f7f2ea 0%, #efe5d8 100%);
-  border: 2px solid rgba(122, 92, 70, 0.18);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-}
-
-.flap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 52%;
-  background: #e8dccd;
-  clip-path: polygon(0 0, 50% 100%, 100% 0);
-  transform-origin: top;
-  transition: transform 0.8s ease;
-  z-index: 2;
-}
-
-.letter {
-  position: absolute;
-  left: 50%;
-  bottom: 10px;
-  transform: translateX(-50%);
-  width: 85%;
-  background: white;
-  padding: 18px 14px;
-  border-radius: 12px;
-  text-align: center;
-  transition: transform 0.8s ease;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-}
-
-.letter h1 {
-  margin: 0 0 8px;
-  color: var(--emerald);
-  font-size: 1.5rem;
-}
-
-.letter p {
-  margin: 6px 0;
-  color: var(--brown);
-}
-
-.envelope.open .flap {
-  transform: rotateX(180deg);
-}
-
-.envelope.open .letter {
-  transform: translateX(-50%) translateY(-60px);
-}
-
-.hero {
-  min-height: 100vh;
-  background: linear-gradient(rgba(47, 93, 80, 0.45), rgba(122, 92, 70, 0.45)),
-    #b9b1a8;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  color: white;
-  padding: 24px 16px;
-}
-
-.overlay {
-  width: 100%;
-  max-width: 800px;
-}
-
-.overlay h1 {
-  font-size: clamp(2.2rem, 8vw, 4.5rem);
-  margin-bottom: 10px;
-  line-height: 1.1;
-}
-
-.overlay p {
-  font-size: clamp(1rem, 3vw, 1.3rem);
-  margin: 8px 0;
-}
-
-.card {
-  width: min(92%, 700px);
-  margin: 20px auto;
-  background: white;
-  padding: 24px 18px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-}
-
-.card h2 {
-  margin-top: 0;
-  text-align: center;
-}
-
-.countdown {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.countdown div {
-  background: var(--cream);
-  padding: 14px 18px;
-  border-radius: 14px;
-  min-width: 85px;
-  text-align: center;
-}
-
-input,
-select,
-textarea,
-button {
-  width: 100%;
-  max-width: 100%;
-  font-size: 16px;
-}
-
-input,
-select,
-textarea {
-  padding: 12px;
-  margin: 8px 0 14px;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  font-family: inherit;
-}
-
-textarea {
-  min-height: 110px;
-  resize: vertical;
-}
-
-ul {
-  padding-left: 20px;
-}
-
-li {
-  margin-bottom: 8px;
-}
-
-details {
-  margin-bottom: 12px;
-}
-
-summary {
-  cursor: pointer;
-  font-weight: bold;
-}
-
-@media (min-width: 768px) {
-  .screen {
-    padding: 32px 24px;
-  }
-
-  .card {
-    padding: 32px 28px;
-  }
-
-  .envelope {
-    width: 360px;
-    height: 240px;
-  }
-}
-
-@media (max-width: 480px) {
-  .screen {
-    padding: 20px 12px;
-  }
-
-  .card {
-    width: 94%;
-    padding: 18px 14px;
-    border-radius: 16px;
-  }
-
-  .countdown div {
-    min-width: 70px;
-    padding: 12px 10px;
-  }
-
-  .envelope.open .letter {
-    transform: translateX(-50%) translateY(-45px);
-  }
-}
+  <script src="script.js"></script>
+</body>
+</html>
