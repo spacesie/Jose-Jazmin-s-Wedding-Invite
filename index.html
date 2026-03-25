@@ -7,20 +7,23 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="loader" class="screen hidden">
+  <!-- Screen 1 -->
+  <section id="loader" class="screen">
     <div class="center-box">
-      <p class="small">Hello Test</p>
+      <p class="small">A special invitation for you</p>
       <button id="openIntro" class="btn" type="button">Open</button>
     </div>
-  </div>
+  </section>
 
-  <section id="envelopeSection" class="screen">
+  <!-- Screen 2 -->
+  <section id="envelopeSection" class="screen hidden">
     <div class="envelope-wrap">
       <div id="envelope" class="envelope">
         <div class="flap"></div>
+        <div class="seal">J&amp;J</div>
 
         <div class="letter">
-          <h1>Jose & Jazmin</h1>
+          <h1>Jose &amp; Jazmin</h1>
           <p>Save the Date</p>
           <p>December 18, 2026</p>
           <p>Lynwood, California</p>
@@ -31,10 +34,11 @@
     </div>
   </section>
 
+  <!-- Screen 3 -->
   <main id="invite" class="hidden">
     <header class="hero">
       <div class="overlay">
-        <h1>Jose & Jazmin</h1>
+        <h1>Jose &amp; Jazmin</h1>
         <p>We’re getting married</p>
         <p>December 18, 2026 · Lynwood, California</p>
       </div>
@@ -48,7 +52,7 @@
     <section class="card">
       <h2>Location</h2>
       <p>Lynwood, California</p>
-      <a class="btn" href="https://maps.google.com" target="_blank">Open Map</a>
+      <a class="btn small-btn" href="https://maps.google.com" target="_blank" rel="noopener noreferrer">Open Map</a>
     </section>
 
     <section class="card">
@@ -83,7 +87,7 @@
           <option>Yes, I will attend</option>
           <option>Sorry, I can’t attend</option>
         </select>
-        <button type="submit" class="btn" type="submit">Send RSVP</button>
+        <button class="btn small-btn" type="submit">Send RSVP</button>
       </form>
       <p id="rsvpMessage"></p>
     </section>
