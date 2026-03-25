@@ -43,7 +43,7 @@ body {
   position: relative;
   width: 100%;
   height: 100vh;
-  background: url("envelope.png") center center / cover no-repeat;
+  background: url("envelope.png") center center / contain no-repeat;
   overflow: hidden;
 }
 
