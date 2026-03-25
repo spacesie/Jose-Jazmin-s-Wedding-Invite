@@ -8,24 +8,45 @@ const countdown = document.getElementById("countdown");
 const rsvpForm = document.getElementById("rsvpForm");
 const rsvpMessage = document.getElementById("rsvpMessage");
 
-openIntro.addEventListener("click", () => {
+function showLoader() {
+  loader.classList.remove("hidden");
+  envelopeSection.classList.add("hidden");
+  invite.classList.add("hidden");
+  window.scrollTo(0, 0);
+}
+
+function showEnvelope() {
   loader.classList.add("hidden");
   envelopeSection.classList.remove("hidden");
+  invite.classList.add("hidden");
+  window.scrollTo(0, 0);
+}
+
+function showInvite() {
+  loader.classList.add("hidden");
+  envelopeSection.classList.add("hidden");
+  invite.classList.remove("hidden");
+  window.scrollTo(0, 0);
+}
+
+openIntro.addEventListener("click", () => {
+  showEnvelope();
 });
 
 openInvite.addEventListener("click", () => {
   envelope.classList.add("open");
+  window.scrollTo(0, 0);
 
   setTimeout(() => {
-    envelopeSection.classList.add("hidden");
-    invite.classList.remove("hidden");
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    showInvite();
   }, 1200);
 });
 
 const targetDate = new Date("December 18, 2026 16:00:00").getTime();
 
 function updateCountdown() {
+  if (!countdown) return;
+
   const now = new Date().getTime();
   const distance = targetDate - now;
 
@@ -36,7 +57,7 @@ function updateCountdown() {
 
   const days = Math.floor(distance / (1000 * 60 * 60 * 24));
   const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((distance / 1000 / 60) % 60);
+  const minutes = Math.floor((distance / (1000 * 60) ) % 60);
   const seconds = Math.floor((distance / 1000) % 60);
 
   countdown.innerHTML = `
@@ -54,3 +75,5 @@ rsvpForm.addEventListener("submit", (e) => {
   e.preventDefault();
   rsvpMessage.textContent = "Your RSVP was recorded.";
 });
+
+showLoader();
