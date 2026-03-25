@@ -79,7 +79,7 @@ body {
   position: relative;
   width: min(90vw, 340px);
   height: 220px;
-  margin: 0 auto 22px;
+  margin: 0 auto;
   background: linear-gradient(180deg, #f7f2ea 0%, var(--paper) 100%);
   border: 2px solid rgba(122, 92, 70, 0.18);
   border-radius: 14px;
