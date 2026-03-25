@@ -1,14 +1,10 @@
-const openIntro = document.getElementById("openIntro");
 const loader = document.getElementById("loader");
 const envelopeSection = document.getElementById("envelopeSection");
+const invite = document.getElementById("invite");
+const openIntro = document.getElementById("openIntro");
 const openInvite = document.getElementById("openInvite");
 const envelope = document.getElementById("envelope");
-const invite = document.getElementById("invite");
 const countdown = document.getElementById("countdown");
-const musicToggle = document.getElementById("musicToggle");
-const bgMusic = document.getElementById("bgMusic");
-const rsvpForm = document.getElementById("rsvpForm");
-const rsvpMessage = document.getElementById("rsvpMessage");
 
 openIntro.addEventListener("click", () => {
   loader.classList.add("hidden");
@@ -51,20 +47,3 @@ function updateCountdown() {
 
 setInterval(updateCountdown, 1000);
 updateCountdown();
-
-musicToggle.addEventListener("click", async () => {
-  if (bgMusic.paused) {
-    try {
-      await bgMusic.play();
-    } catch (e) {
-      console.log("Autoplay blocked until interaction.");
-    }
-  } else {
-    bgMusic.pause();
-  }
-});
-
-rsvpForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  rsvpMessage.textContent = "Your RSVP was recorded.";
-});
