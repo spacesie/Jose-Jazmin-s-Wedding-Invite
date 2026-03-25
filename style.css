@@ -22,12 +22,6 @@ body {
   overflow-x: hidden;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
 .hidden {
   display: none;
 }
@@ -62,11 +56,7 @@ img {
   text-decoration: none;
   display: inline-block;
   min-height: 48px;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.btn:hover {
-  transform: translateY(-1px);
+  min-width: 220px;
 }
 
 .envelope-wrap {
@@ -78,14 +68,13 @@ img {
 .envelope {
   position: relative;
   width: min(90vw, 320px);
-  height: min(60vw, 210px);
-  min-height: 190px;
+  height: 210px;
   margin: 0 auto 20px;
   background: linear-gradient(180deg, #f7f2ea 0%, #efe5d8 100%);
   border: 2px solid rgba(122, 92, 70, 0.18);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
 }
 
 .flap {
@@ -93,7 +82,7 @@ img {
   top: 0;
   left: 0;
   width: 100%;
-  height: 50%;
+  height: 52%;
   background: #e8dccd;
   clip-path: polygon(0 0, 50% 100%, 100% 0);
   transform-origin: top;
@@ -112,12 +101,13 @@ img {
   border-radius: 12px;
   text-align: center;
   transition: transform 0.8s ease;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .letter h1 {
   margin: 0 0 8px;
   color: var(--emerald);
+  font-size: 1.5rem;
 }
 
 .letter p {
@@ -135,8 +125,8 @@ img {
 
 .hero {
   min-height: 100vh;
-  background: linear-gradient(rgba(47,93,80,.45), rgba(122,92,70,.45)),
-              url("images/hero.jpg") center/cover no-repeat;
+  background: linear-gradient(rgba(47, 93, 80, 0.45), rgba(122, 92, 70, 0.45)),
+    #b9b1a8;
   display: grid;
   place-items: center;
   text-align: center;
@@ -166,7 +156,7 @@ img {
   background: white;
   padding: 24px 18px;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 .card h2 {
@@ -230,28 +220,8 @@ summary {
   font-weight: bold;
 }
 
-.music-btn {
-  position: fixed;
-  right: 16px;
-  bottom: 16px;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  border: none;
-  background: var(--brown);
-  color: white;
-  font-size: 1.2rem;
-  cursor: pointer;
-  z-index: 999;
-}
-
-/* Tablet and laptop */
 @media (min-width: 768px) {
   .screen {
-    padding: 32px 24px;
-  }
-
-  .hero {
     padding: 32px 24px;
   }
 
@@ -263,19 +233,10 @@ summary {
     width: 360px;
     height: 240px;
   }
-
-  .letter {
-    padding: 22px 18px;
-  }
 }
 
-/* Small phones */
 @media (max-width: 480px) {
   .screen {
-    padding: 20px 12px;
-  }
-
-  .hero {
     padding: 20px 12px;
   }
 
@@ -288,13 +249,6 @@ summary {
   .countdown div {
     min-width: 70px;
     padding: 12px 10px;
-  }
-
-  .music-btn {
-    width: 48px;
-    height: 48px;
-    right: 12px;
-    bottom: 12px;
   }
 
   .envelope.open .letter {
