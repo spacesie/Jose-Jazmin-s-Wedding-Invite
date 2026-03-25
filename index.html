@@ -1,1 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jose & Jazmin</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="loader" class="screen active">
+    <div class="center-box">
+      <p class="small">A special invitation for you</p>
+      <button id="openIntro" class="btn">Open</button>
+    </div>
+  </div>
 
+  <section id="envelopeSection" class="screen hidden">
+    <div class="envelope-wrap">
+      <div id="envelope" class="envelope">
+        <div class="flap"></div>
+        <div class="letter">
+          <h1>Jose & Jazmin</h1>
+          <p>Save the Date</p>
+          <p>December 18, 2026</p>
+          <p>Lynwood, California</p>
+        </div>
+      </div>
+      <button id="openInvite" class="btn">Click here</button>
+    </div>
+  </section>
+
+  <main id="invite" class="hidden">
+    <header class="hero">
+      <div class="overlay">
+        <h1>Jose & Jazmin</h1>
+        <p>We’re getting married</p>
+        <p>December 18, 2026 · Lynwood, California</p>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>Countdown</h2>
+      <div id="countdown" class="countdown"></div>
+    </section>
+
+    <section class="card">
+      <h2>Location</h2>
+      <p>Lynwood, California</p>
+      <a class="btn" href="https://maps.google.com" target="_blank">Open Map</a>
+    </section>
+
+    <section class="card">
+      <h2>Schedule</h2>
+      <ul>
+        <li>4:00 PM – Ceremony</li>
+        <li>5:00 PM – Cocktail Hour</li>
+        <li>6:00 PM – Dinner</li>
+        <li>8:00 PM – Dancing</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>FAQ</h2>
+      <details>
+        <summary>Can I bring a guest?</summary>
+        <p>Please check your invitation details.</p>
+      </details>
+      <details>
+        <summary>What should I wear?</summary>
+        <p>Elegant attire in earthy tones.</p>
+      </details>
+    </section>
+
+    <section class="card">
+      <h2>RSVP</h2>
+      <form id="rsvpForm">
+        <input type="text" placeholder="Your name" required />
+        <input type="email" placeholder="Email" />
+        <select required>
+          <option value="">Will you attend?</option>
+          <option>Yes, I will attend</option>
+          <option>Sorry, I can’t attend</option>
+        </select>
+        <button type="submit" class="btn">Send RSVP</button>
+      </form>
+      <p id="rsvpMessage"></p>
+    </section>
+  </main>
+
+  <button id="musicToggle" class="music-btn">♪</button>
+  <audio id="bgMusic" loop>
+    <source src="audio/music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
