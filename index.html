@@ -1,49 +1,94 @@
-.envelope {
-  position: relative;
-  width: min(90vw, 320px);
-  height: min(60vw, 210px);
-  min-height: 190px;
-  margin: 0 auto 20px;
-  background: linear-gradient(180deg, #f7f2ea 0%, #efe5d8 100%);
-  border: 2px solid rgba(122, 92, 70, 0.18);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jose & Jazmin</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="loader" class="screen">
+    <div class="center-box">
+      <p class="small">A special invitation for you</p>
+      <button id="openIntro" class="btn" type="button">Open</button>
+    </div>
+  </div>
 
-.flap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50%;
-  background: #e8dccd;
-  clip-path: polygon(0 0, 50% 100%, 100% 0);
-  transform-origin: top;
-  transition: transform 0.8s ease;
-  z-index: 2;
-}
+  <section id="envelopeSection" class="screen hidden">
+    <div class="envelope-wrap">
+      <div id="envelope" class="envelope">
+        <div class="flap"></div>
 
-.letter {
-  position: absolute;
-  left: 50%;
-  bottom: 10px;
-  transform: translateX(-50%);
-  width: 85%;
-  background: white;
-  padding: 18px 14px;
-  border-radius: 12px;
-  text-align: center;
-  transition: transform 0.8s ease;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-}
+        <div class="letter">
+          <h1>Jose & Jazmin</h1>
+          <p>Save the Date</p>
+          <p>December 18, 2026</p>
+          <p>Lynwood, California</p>
+        </div>
+      </div>
 
-.letter h1 {
-  margin: 0 0 8px;
-  color: var(--emerald);
-}
+      <button id="openInvite" class="btn" type="button">Open Invitation</button>
+    </div>
+  </section>
 
-.letter p {
-  margin: 6px 0;
-  color: var(--brown);
-}
+  <main id="invite" class="hidden">
+    <header class="hero">
+      <div class="overlay">
+        <h1>Jose & Jazmin</h1>
+        <p>We’re getting married</p>
+        <p>December 18, 2026 · Lynwood, California</p>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>Countdown</h2>
+      <div id="countdown" class="countdown"></div>
+    </section>
+
+    <section class="card">
+      <h2>Location</h2>
+      <p>Lynwood, California</p>
+      <a class="btn" href="https://maps.google.com" target="_blank">Open Map</a>
+    </section>
+
+    <section class="card">
+      <h2>Schedule</h2>
+      <ul>
+        <li>4:00 PM – Ceremony</li>
+        <li>5:00 PM – Cocktail Hour</li>
+        <li>6:00 PM – Dinner</li>
+        <li>8:00 PM – Dancing</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>FAQ</h2>
+      <details>
+        <summary>Can I bring a guest?</summary>
+        <p>Please check your invitation details.</p>
+      </details>
+      <details>
+        <summary>What should I wear?</summary>
+        <p>Elegant attire in earthy tones.</p>
+      </details>
+    </section>
+
+    <section class="card">
+      <h2>RSVP</h2>
+      <form id="rsvpForm">
+        <input type="text" placeholder="Your name" required />
+        <input type="email" placeholder="Email" />
+        <select required>
+          <option value="">Will you attend?</option>
+          <option>Yes, I will attend</option>
+          <option>Sorry, I can’t attend</option>
+        </select>
+        <button type="submit" class="btn" type="submit">Send RSVP</button>
+      </form>
+      <p id="rsvpMessage"></p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
