@@ -12,13 +12,19 @@
       <div class="scene-bg"></div>
 
       <div id="envelopeFigure" class="envelope-figure">
-        <img src="envelope.png" alt="Wedding envelope" class="envelope-image" />
+        <!-- DESKTOP -->
+        <img src="Envelope-desktop.png" alt="Envelope body desktop" class="env-layer desktop-layer envelope-body" />
+        <img src="inner-desktop.png" alt="Envelope inside desktop" class="env-layer desktop-layer inner-layer" />
+        <img src="flap-desktop.png" alt="Envelope flap desktop" class="env-layer desktop-layer flap-layer" />
+        <img src="seal-desktop.png" alt="Wax seal desktop" class="env-layer desktop-layer seal-image" />
 
-        <div id="flapOverlay" class="flap-overlay"></div>
+        <!-- MOBILE -->
+        <img src="envelope-mobile_full.png" alt="Envelope body mobile" class="env-layer mobile-layer envelope-body" />
+        <img src="inner-mobile_full.png" alt="Envelope inside mobile" class="env-layer mobile-layer inner-layer" />
+        <img src="flap-mobile_full.png" alt="Envelope flap mobile" class="env-layer mobile-layer flap-layer" />
+        <img src="seal-mobile_full.png" alt="Wax seal mobile" class="env-layer mobile-layer seal-image" />
 
-        <button id="sealButton" class="seal" type="button" aria-label="Open invitation">
-          <span class="seal-inner">✦</span>
-        </button>
+        <button id="sealButton" class="seal-button" type="button" aria-label="Open invitation"></button>
 
         <div id="previewCard" class="preview-card">
           <h2>Jose &amp; Jazmin</h2>
@@ -26,8 +32,12 @@
           <p>December 18, 2026</p>
           <p>Lynwood, California</p>
         </div>
+      </div>
 
-        <div id="petals" class="petals"></div>
+      <!-- FULL SCREEN FLORAL TRANSITION -->
+      <div id="transitionLayer" class="transition-layer" aria-hidden="true">
+        <div class="transition-wash"></div>
+        <div id="floatingGarden" class="floating-garden"></div>
       </div>
     </div>
   </section>
