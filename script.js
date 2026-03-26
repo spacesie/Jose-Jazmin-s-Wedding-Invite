@@ -7,8 +7,10 @@ const whiteFlash = document.getElementById("whiteFlash");
 const fallingFlowers = document.getElementById("fallingFlowers");
 const countdown = document.getElementById("countdown");
 const inviteMusic = document.getElementById("inviteMusic");
+const musicToggle = document.getElementById("musicToggle");
 
 let isOpening = false;
+let musicStarted = false;
 
 function revealInvite() {
   invite.classList.remove("hidden");
@@ -16,13 +18,62 @@ function revealInvite() {
   window.scrollTo({ top: 0, behavior: "auto" });
 }
 
+function updateMusicButton() {
+  if (!inviteMusic || !musicToggle) return;
+
+  if (inviteMusic.paused) {
+    musicToggle.classList.add("paused");
+    musicToggle.textContent = "♫";
+    musicToggle.setAttribute("aria-label", "Play music");
+  } else {
+    musicToggle.classList.remove("paused");
+    musicToggle.textContent = "♪";
+    musicToggle.setAttribute("aria-label", "Pause music");
+  }
+}
+
 function playMusic() {
   if (!inviteMusic) return;
 
   inviteMusic.volume = 0.45;
-  inviteMusic.play().catch(() => {
-    console.log("Music autoplay was blocked until user interaction.");
-  });
+  inviteMusic.play()
+    .then(() => {
+      musicStarted = true;
+      updateMusicButton();
+    })
+    .catch(() => {
+      updateMusicButton();
+    });
+}
+
+function toggleMusic() {
+  if (!inviteMusic) return;
+
+  if (!musicStarted) {
+    inviteMusic.volume = 0.45;
+    inviteMusic.play()
+      .then(() => {
+        musicStarted = true;
+        updateMusicButton();
+      })
+      .catch(() => {
+        updateMusicButton();
+      });
+    return;
+  }
+
+  if (inviteMusic.paused) {
+    inviteMusic.play()
+      .then(() => {
+        updateMusicButton();
+      })
+      .catch(() => {
+        updateMusicButton();
+      });
+  } else {
+    inviteMusic.pause();
+    updateMusicButton();
+  }
 }
 
 function createFlowerPiece() {
@@ -124,6 +175,17 @@ sealButton.addEventListener("click", () => {
     envelopeSection.classList.add("hidden");
   }, 5200);
 });
+
+if (musicToggle) {
+  musicToggle.addEventListener("click", toggleMusic);
+}
+
+if (inviteMusic) {
+  inviteMusic.addEventListener("play", updateMusicButton);
+  inviteMusic.addEventListener("pause", updateMusicButton);
+}
+
+updateMusicButton();
 
 const targetDate = new Date("December 18, 2026 16:00:00").getTime();
 
