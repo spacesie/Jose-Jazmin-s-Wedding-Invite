@@ -28,8 +28,8 @@ function createFlowerPiece() {
   piece.className = `flower-piece ${type} fall`;
 
   const left = Math.random() * 100;
-  const duration = 2.8 + Math.random() * 2.2;
-  const delay = Math.random() * 0.8;
+  const duration = 2.7 + Math.random() * 2.1;
+  const delay = Math.random() * 0.7;
   const drift = `${-90 + Math.random() * 180}px`;
   const spin = `${-240 + Math.random() * 480}deg`;
 
@@ -60,15 +60,15 @@ function createFlowerPiece() {
   }, (duration + delay + 0.5) * 1000);
 }
 
-function burstFlowers(total = 110) {
+function burstFlowers(total = 120) {
   for (let i = 0; i < total; i++) {
     setTimeout(() => {
       createFlowerPiece();
-    }, i * 28);
+    }, i * 24);
   }
 }
 
-function continueFlowers(durationMs = 2200, rateMs = 80) {
+function continueFlowers(durationMs = 2100, rateMs = 70) {
   const start = Date.now();
 
   const interval = setInterval(() => {
@@ -88,28 +88,32 @@ sealButton.addEventListener("click", () => {
 
   setTimeout(() => {
     cascadeLayer.classList.add("active");
-    burstFlowers(window.innerWidth < 768 ? 130 : 110);
-  }, 1200);
+    burstFlowers(window.innerWidth < 768 ? 140 : 120);
+  }, 950);
 
   setTimeout(() => {
-    continueFlowers(2600, 70);
-  }, 1700);
+    continueFlowers(2400, 65);
+  }, 1300);
 
   setTimeout(() => {
     whiteFlash.classList.add("active");
-  }, 3400);
+  }, 3000);
+
+  setTimeout(() => {
+    envelopeFigure.classList.add("fade-away");
+  }, 3200);
 
   setTimeout(() => {
     revealInvite();
-  }, 3750);
+  }, 3600);
 
   setTimeout(() => {
     cascadeLayer.classList.add("fade-out");
-  }, 4050);
+  }, 3900);
 
   setTimeout(() => {
     envelopeSection.classList.add("hidden");
-  }, 5600);
+  }, 5200);
 });
 
 const targetDate = new Date("December 18, 2026 16:00:00").getTime();
