@@ -64,7 +64,6 @@ body {
   height: 100dvh;
   z-index: 3;
   overflow: hidden;
-  perspective: 2200px;
 }
 
 .env-layer {
@@ -78,7 +77,6 @@ body {
   object-position: center center;
 }
 
-/* desktop */
 .desktop-layer {
   display: block;
   object-fit: cover;
@@ -102,7 +100,7 @@ body {
   z-index: 5;
   transform-origin: 50% 18%;
   transform: perspective(2200px) rotateX(0deg) translateY(0) scale(1.01);
-  transition: transform 1.8s cubic-bezier(0.2, 0.85, 0.2, 1);
+  transition: transform 1.7s cubic-bezier(0.2, 0.85, 0.2, 1);
   backface-visibility: hidden;
   transform-style: preserve-3d;
 }
@@ -119,7 +117,7 @@ body {
 .seal-button {
   position: absolute;
   left: 50%;
-  top: 51.3%;
+  top: 51.2%;
   transform: translate(-50%, -50%);
   width: 8vw;
   height: 8vw;
@@ -131,11 +129,12 @@ body {
   border-radius: 50%;
   background: transparent;
   cursor: pointer;
-  z-index: 60;
+  z-index: 70;
   pointer-events: auto;
   touch-action: manipulation;
 }
 
+/* desktop shadow/flap behavior */
 .envelope-figure::before {
   content: "";
   position: absolute;
@@ -154,17 +153,98 @@ body {
   opacity: 1;
 }
 
-.envelope-figure.opening .flap-layer {
-  transform: perspective(2200px) rotateX(178deg) translateY(-3%) scale(1.01);
+.envelope-figure.opening .desktop-layer.flap-layer {
+  transform: perspective(2200px) rotateX(176deg) translateY(-2.6%) scale(1.01);
 }
 
-.envelope-figure.opening .seal-image {
+.envelope-figure.opening .desktop-layer.seal-image {
   opacity: 0;
   transform: scale(0.65) translateY(-20px);
   filter: blur(5px);
 }
 
-/* cascade */
+/* mobile full envelope */
+.mobile-envelope-full {
+  z-index: 3;
+}
+
+.mobile-seal {
+  z-index: 6;
+}
+
+/* fake flap tip lift for mobile */
+.mobile-flap-tip {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .scene-bg {
+    background:
+      linear-gradient(rgba(247, 243, 237, 0.08), rgba(247, 243, 237, 0.08)),
+      url("envelope-mobile_full.png") center center / contain no-repeat;
+    filter: blur(12px) saturate(0.95);
+    transform: scale(1.04);
+  }
+
+  .desktop-layer {
+    display: none;
+  }
+
+  .mobile-layer {
+    display: block;
+    object-fit: contain;
+    transform: scale(1);
+  }
+
+  .mobile-flap-tip {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 39.8%;
+    width: 58vw;
+    max-width: 320px;
+    height: 18vh;
+    transform: translateX(-50%) perspective(1200px) rotateX(0deg) translateY(0);
+    transform-origin: top center;
+    z-index: 5;
+    pointer-events: none;
+    opacity: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.20),
+      rgba(255, 255, 255, 0.07),
+      rgba(255, 255, 255, 0)
+    );
+    clip-path: polygon(50% 0%, 100% 72%, 0% 72%);
+    filter: blur(1px);
+    transition:
+      transform 1.25s cubic-bezier(0.2, 0.85, 0.2, 1),
+      opacity 0.8s ease;
+  }
+
+  .envelope-figure.opening .mobile-flap-tip {
+    opacity: 1;
+    transform: translateX(-50%) perspective(1200px) rotateX(48deg) translateY(-12px);
+  }
+
+  .envelope-figure.opening .mobile-seal {
+    opacity: 0;
+    transform: scale(0.68) translateY(-18px);
+    filter: blur(5px);
+  }
+
+  .seal-button {
+    top: 50.5%;
+    width: 18vw;
+    height: 18vw;
+    min-width: 66px;
+    min-height: 66px;
+    max-width: 92px;
+    max-height: 92px;
+  }
+}
+
+/* cascade and falling flowers */
 .cascade-layer {
   position: absolute;
   inset: 0;
@@ -175,11 +255,11 @@ body {
 }
 
 .cascade-layer.active {
-  animation: cascadeIn 2.4s ease forwards;
+  animation: cascadeIn 1.6s ease forwards;
 }
 
 .cascade-layer.fade-out {
-  animation: cascadeOut 1.6s ease forwards;
+  animation: cascadeOut 1.4s ease forwards;
 }
 
 .cascade-image {
@@ -189,7 +269,7 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
-  opacity: 0.7;
+  opacity: 0.62;
   transform: scale(1.03);
 }
 
@@ -249,24 +329,15 @@ body {
 }
 
 @keyframes cascadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 @keyframes cascadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+  0% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
-/* flash */
 .white-flash {
   position: absolute;
   inset: 0;
@@ -278,28 +349,34 @@ body {
 }
 
 .white-flash.active {
-  animation: softFlash 1.4s ease forwards;
+  animation: softFlash 1.35s ease forwards;
 }
 
 @keyframes softFlash {
+  0% { opacity: 0; }
+  25% { opacity: 0.34; }
+  50% { opacity: 0.55; }
+  75% { opacity: 0.22; }
+  100% { opacity: 0; }
+}
+
+/* envelope fades out after flash */
+.envelope-figure.fade-away {
+  animation: envelopeFadeAway 1.2s ease forwards;
+}
+
+@keyframes envelopeFadeAway {
   0% {
-    opacity: 0;
-  }
-  25% {
-    opacity: 0.36;
-  }
-  50% {
-    opacity: 0.56;
-  }
-  75% {
-    opacity: 0.24;
+    opacity: 1;
+    filter: blur(0);
   }
   100% {
     opacity: 0;
+    filter: blur(10px);
   }
 }
 
-/* invite page background continues downward */
+/* invite background continues down page */
 .invite-shell {
   position: relative;
   background:
@@ -459,7 +536,7 @@ summary {
 }
 
 .fade-in-slow {
-  animation: inviteFadeSlow 2.6s ease forwards;
+  animation: inviteFadeSlow 2.4s ease forwards;
 }
 
 @keyframes inviteFadeSlow {
@@ -472,54 +549,6 @@ summary {
     opacity: 1;
     transform: translateY(0);
     filter: blur(0);
-  }
-}
-
-/* mobile */
-@media (max-width: 768px) {
-  .scene-bg {
-    background:
-      linear-gradient(rgba(247, 243, 237, 0.08), rgba(247, 243, 237, 0.08)),
-      url("envelope-mobile_full.png") center center / cover no-repeat;
-  }
-
-  .desktop-layer {
-    display: none;
-  }
-
-  .mobile-layer {
-    display: block;
-    object-fit: contain;
-    transform: scale(1);
-  }
-
-  .flap-layer.mobile-layer {
-    transform-origin: 50% 17%;
-    transform: perspective(2200px) rotateX(0deg) translateY(0) scale(1);
-  }
-
-  .envelope-figure.opening .flap-layer.mobile-layer {
-    transform: perspective(2200px) rotateX(178deg) translateY(-4%) scale(1);
-  }
-
-  .seal-button {
-    top: 50.7%;
-    width: 18vw;
-    height: 18vw;
-    min-width: 66px;
-    min-height: 66px;
-    max-width: 92px;
-    max-height: 92px;
-    z-index: 70;
-  }
-
-  .hero-overlay {
-    padding: 30px 18px;
-    border-radius: 22px;
-  }
-
-  .hero-message {
-    line-height: 1.7;
   }
 }
 
