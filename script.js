@@ -4,6 +4,7 @@ const sealButton = document.getElementById("sealButton");
 const envelopeFigure = document.getElementById("envelopeFigure");
 const cascadeLayer = document.getElementById("cascadeLayer");
 const whiteFlash = document.getElementById("whiteFlash");
+const fallingFlowers = document.getElementById("fallingFlowers");
 const countdown = document.getElementById("countdown");
 const rsvpForm = document.getElementById("rsvpForm");
 const rsvpMessage = document.getElementById("rsvpMessage");
@@ -13,7 +14,70 @@ let isOpening = false;
 function revealInvite() {
   invite.classList.remove("hidden");
   invite.classList.add("fade-in-slow");
-  window.scrollTo({ top: 0, behavior: "instant" });
+  window.scrollTo({ top: 0, behavior: "auto" });
+}
+
+function createFlowerPiece() {
+  const piece = document.createElement("span");
+  const rand = Math.random();
+
+  let type = "petal";
+  if (rand > 0.55 && rand <= 0.85) type = "leaf";
+  if (rand > 0.85) type = "baby";
+
+  piece.className = `flower-piece ${type} fall`;
+
+  const left = Math.random() * 100;
+  const duration = 2.8 + Math.random() * 2.2;
+  const delay = Math.random() * 0.8;
+  const drift = `${-90 + Math.random() * 180}px`;
+  const spin = `${-240 + Math.random() * 480}deg`;
+
+  piece.style.left = `${left}%`;
+  piece.style.setProperty("--drift-x", drift);
+  piece.style.setProperty("--spin", spin);
+  piece.style.animationDuration = `${duration}s`;
+  piece.style.animationDelay = `${delay}s`;
+
+  if (type === "petal") {
+    const width = 14 + Math.random() * 18;
+    piece.style.width = `${width}px`;
+    piece.style.height = `${width * 1.42}px`;
+  } else if (type === "leaf") {
+    const width = 18 + Math.random() * 28;
+    piece.style.width = `${width}px`;
+    piece.style.height = `${width * 0.56}px`;
+  } else {
+    const size = 5 + Math.random() * 7;
+    piece.style.width = `${size}px`;
+    piece.style.height = `${size}px`;
+  }
+
+  fallingFlowers.appendChild(piece);
+
+  setTimeout(() => {
+    piece.remove();
+  }, (duration + delay + 0.5) * 1000);
+}
+
+function burstFlowers(total = 110) {
+  for (let i = 0; i < total; i++) {
+    setTimeout(() => {
+      createFlowerPiece();
+    }, i * 28);
+  }
+}
+
+function continueFlowers(durationMs = 2200, rateMs = 80) {
+  const start = Date.now();
+
+  const interval = setInterval(() => {
+    createFlowerPiece();
+
+    if (Date.now() - start > durationMs) {
+      clearInterval(interval);
+    }
+  }, rateMs);
 }
 
 sealButton.addEventListener("click", () => {
@@ -24,23 +88,28 @@ sealButton.addEventListener("click", () => {
 
   setTimeout(() => {
     cascadeLayer.classList.add("active");
-  }, 1400);
+    burstFlowers(window.innerWidth < 768 ? 130 : 110);
+  }, 1200);
+
+  setTimeout(() => {
+    continueFlowers(2600, 70);
+  }, 1700);
 
   setTimeout(() => {
     whiteFlash.classList.add("active");
-  }, 4200);
+  }, 3400);
 
   setTimeout(() => {
     revealInvite();
-  }, 4550);
+  }, 3750);
 
   setTimeout(() => {
     cascadeLayer.classList.add("fade-out");
-  }, 4900);
+  }, 4050);
 
   setTimeout(() => {
     envelopeSection.classList.add("hidden");
-  }, 6600);
+  }, 5600);
 });
 
 const targetDate = new Date("December 18, 2026 16:00:00").getTime();
