@@ -6,8 +6,6 @@ const cascadeLayer = document.getElementById("cascadeLayer");
 const whiteFlash = document.getElementById("whiteFlash");
 const fallingFlowers = document.getElementById("fallingFlowers");
 const countdown = document.getElementById("countdown");
-const rsvpForm = document.getElementById("rsvpForm");
-const rsvpMessage = document.getElementById("rsvpMessage");
 
 let isOpening = false;
 
@@ -89,27 +87,27 @@ sealButton.addEventListener("click", () => {
   setTimeout(() => {
     cascadeLayer.classList.add("active");
     burstFlowers(window.innerWidth < 768 ? 140 : 120);
-  }, 950);
+  }, 900);
 
   setTimeout(() => {
     continueFlowers(2400, 65);
-  }, 1300);
+  }, 1250);
 
   setTimeout(() => {
     whiteFlash.classList.add("active");
-  }, 3000);
+  }, 2950);
 
   setTimeout(() => {
     envelopeFigure.classList.add("fade-away");
-  }, 3200);
+  }, 3150);
 
   setTimeout(() => {
     revealInvite();
-  }, 3600);
+  }, 3550);
 
   setTimeout(() => {
     cascadeLayer.classList.add("fade-out");
-  }, 3900);
+  }, 3880);
 
   setTimeout(() => {
     envelopeSection.classList.add("hidden");
@@ -144,10 +142,3 @@ function updateCountdown() {
 
 setInterval(updateCountdown, 1000);
 updateCountdown();
-
-if (rsvpForm) {
-  rsvpForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    rsvpMessage.textContent = "Your RSVP was recorded.";
-  });
-}
