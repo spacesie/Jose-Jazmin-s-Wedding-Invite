@@ -18,12 +18,9 @@
         <img src="flap-desktop.png" alt="" class="env-layer desktop-layer flap-layer" />
         <img src="seal-desktop.png" alt="" class="env-layer desktop-layer seal-image" />
 
-        <!-- MOBILE: use the full envelope image -->
+        <!-- MOBILE FULL ENVELOPE -->
         <img src="envelope-mobile_full.png" alt="" class="env-layer mobile-layer mobile-envelope-full" />
         <img src="seal-mobile_full.png" alt="" class="env-layer mobile-layer seal-image mobile-seal" />
-
-        <!-- subtle flap tip lift highlight -->
-        <div class="mobile-flap-tip"></div>
 
         <button
           id="sealButton"
@@ -56,10 +53,18 @@
       </div>
     </header>
 
+    <div class="section-divider" aria-hidden="true">
+      <img src="eucalyptus-divider.png" alt="" />
+    </div>
+
     <section class="card">
       <h2>Countdown</h2>
       <div id="countdown" class="countdown"></div>
     </section>
+
+    <div class="section-divider" aria-hidden="true">
+      <img src="eucalyptus-divider.png" alt="" />
+    </div>
 
     <section class="card">
       <h2>Location</h2>
@@ -74,6 +79,10 @@
       </a>
     </section>
 
+    <div class="section-divider" aria-hidden="true">
+      <img src="eucalyptus-divider.png" alt="" />
+    </div>
+
     <section class="card">
       <h2>Schedule</h2>
       <ul>
@@ -84,7 +93,11 @@
       </ul>
     </section>
 
-    <section class="card">
+    <div class="section-divider" aria-hidden="true">
+      <img src="eucalyptus-divider.png" alt="" />
+    </div>
+
+    <section class="card last-card">
       <h2>FAQ</h2>
       <details>
         <summary>Can I bring a guest?</summary>
@@ -94,21 +107,6 @@
         <summary>What should I wear?</summary>
         <p>Elegant attire in earthy tones.</p>
       </details>
-    </section>
-
-    <section class="card">
-      <h2>RSVP</h2>
-      <form id="rsvpForm">
-        <input type="text" placeholder="Your name" required />
-        <input type="email" placeholder="Email" />
-        <select required>
-          <option value="">Will you attend?</option>
-          <option>Yes, I will attend</option>
-          <option>Sorry, I can’t attend</option>
-        </select>
-        <button class="btn small-btn" type="submit">Send RSVP</button>
-      </form>
-      <p id="rsvpMessage"></p>
     </section>
   </main>
 
