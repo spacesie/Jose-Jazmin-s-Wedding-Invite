@@ -13,7 +13,7 @@ let isOpening = false;
 function revealInvite() {
   invite.classList.remove("hidden");
   invite.classList.add("fade-in-slow");
-  window.scrollTo(0, 0);
+  window.scrollTo({ top: 0, behavior: "instant" });
 }
 
 sealButton.addEventListener("click", () => {
@@ -72,7 +72,9 @@ function updateCountdown() {
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
-rsvpForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  rsvpMessage.textContent = "Your RSVP was recorded.";
-});
+if (rsvpForm) {
+  rsvpForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    rsvpMessage.textContent = "Your RSVP was recorded.";
+  });
+}
