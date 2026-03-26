@@ -12,13 +12,13 @@
       <div class="scene-bg"></div>
 
       <div id="envelopeFigure" class="envelope-figure">
-        <!-- DESKTOP LAYERS -->
+        <!-- DESKTOP -->
         <img src="Envelope-desktop.png" alt="" class="env-layer desktop-layer envelope-body" />
         <img src="inner-desktop.png" alt="" class="env-layer desktop-layer inner-layer" />
         <img src="flap-desktop.png" alt="" class="env-layer desktop-layer flap-layer" />
         <img src="seal-desktop.png" alt="" class="env-layer desktop-layer seal-image" />
 
-        <!-- MOBILE FULL ENVELOPE -->
+        <!-- MOBILE -->
         <img src="envelope-mobile_full.png" alt="" class="env-layer mobile-layer mobile-envelope-full" />
         <img src="seal-mobile_full.png" alt="" class="env-layer mobile-layer seal-image mobile-seal" />
 
@@ -68,15 +68,32 @@
 
     <section class="card">
       <h2>Location</h2>
-      <p>Lynwood, California</p>
+      <p class="location-name">11011 Louise Ave</p>
+      <p class="location-address">
+        11011 Louise Ave<br />
+        Lynwood, CA 90262
+      </p>
+
       <a
         class="btn small-btn"
-        href="https://maps.google.com"
+        href="https://www.google.com/maps/search/?api=1&query=11011+Louise+Ave+Lynwood+CA+90262"
         target="_blank"
         rel="noopener noreferrer"
       >
         Open Map
       </a>
+
+      <div class="map-embed">
+        <iframe
+          src="https://www.google.com/maps?q=11011+Louise+Ave+Lynwood+CA+90262&output=embed"
+          width="100%"
+          height="260"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
     </section>
 
     <div class="section-divider" aria-hidden="true">
@@ -109,6 +126,11 @@
       </details>
     </section>
   </main>
+
+  <!-- MUSIC -->
+  <audio id="inviteMusic" loop preload="auto">
+    <source src="music.mp3" type="audio/mpeg" />
+  </audio>
 
   <script src="script.js"></script>
 </body>
