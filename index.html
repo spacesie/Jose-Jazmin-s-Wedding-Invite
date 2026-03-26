@@ -7,18 +7,31 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- ENVELOPE SCREEN -->
   <section id="envelopeSection" class="screen">
-    <div id="envelope" class="envelope">
-      <button id="sealButton" class="seal" type="button" aria-label="Open invitation">
-        <span class="seal-inner">✦</span>
-      </button>
+    <div class="scene">
+      <div class="scene-bg"></div>
 
-      <div id="petals" class="petals"></div>
+      <div id="envelopeFigure" class="envelope-figure">
+        <img src="envelope.png" alt="Wedding envelope" class="envelope-image" />
+
+        <div id="flapOverlay" class="flap-overlay"></div>
+
+        <button id="sealButton" class="seal" type="button" aria-label="Open invitation">
+          <span class="seal-inner">✦</span>
+        </button>
+
+        <div id="previewCard" class="preview-card">
+          <h2>Jose &amp; Jazmin</h2>
+          <p>Save the Date</p>
+          <p>December 18, 2026</p>
+          <p>Lynwood, California</p>
+        </div>
+
+        <div id="petals" class="petals"></div>
+      </div>
     </div>
   </section>
 
-  <!-- INVITATION SCREEN -->
   <main id="invite" class="hidden">
     <header class="hero">
       <div class="overlay">
