@@ -1,142 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jose & Jazmin</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <section id="envelopeSection" class="screen">
-    <div class="scene">
-      <div class="scene-bg"></div>
+<section id="envelopeSection" class="screen">
+  <div id="mobileEnvelopeBg" class="mobile-envelope-bg"></div>
 
-      <div id="envelopeFigure" class="envelope-figure">
-        <!-- DESKTOP -->
-        <img src="Envelope-desktop.png" alt="" class="env-layer desktop-layer envelope-body" />
-        <img src="inner-desktop.png" alt="" class="env-layer desktop-layer inner-layer" />
-        <img src="flap-desktop.png" alt="" class="env-layer desktop-layer flap-layer" />
-        <img src="seal-desktop.png" alt="" class="env-layer desktop-layer seal-image desktop-seal" />
+  <div class="scene">
+    <div class="scene-bg"></div>
 
-        <!-- MOBILE FULL IMAGE -->
-        <img src="envelope-mobile_full.png" alt="" class="env-layer mobile-layer mobile-full-composition" />
-        <img src="seal-mobile_full.png" alt="" class="env-layer mobile-layer seal-image mobile-seal" />
+    <div id="envelopeFigure" class="envelope-figure">
+      <!-- DESKTOP ONLY -->
+      <img src="Envelope-desktop.png" alt="" class="env-layer desktop-layer envelope-body" />
+      <img src="inner-desktop.png" alt="" class="env-layer desktop-layer inner-layer" />
+      <img src="flap-desktop.png" alt="" class="env-layer desktop-layer flap-layer" />
+      <img src="seal-desktop.png" alt="" class="env-layer desktop-layer seal-image desktop-seal" />
 
-        <button
-          id="sealButton"
-          class="seal-button"
-          type="button"
-          aria-label="Open invitation"
-        ></button>
-      </div>
+      <!-- MOBILE ONLY -->
+      <img src="seal-mobile_full.png" alt="" class="mobile-layer seal-image mobile-seal" />
 
-      <div id="cascadeLayer" class="cascade-layer" aria-hidden="true">
-        <img src="transition-cascade.png" alt="" class="cascade-image" />
-        <div id="fallingFlowers" class="falling-flowers"></div>
-      </div>
-
-      <div id="whiteFlash" class="white-flash" aria-hidden="true"></div>
-    </div>
-  </section>
-
-  <main id="invite" class="hidden invite-shell">
-    <header class="hero">
-      <div class="hero-overlay">
-        <p class="eyebrow">Together with our families</p>
-        <h1>Jose &amp; Jazmin</h1>
-        <p class="hero-message">
-          With joyful hearts, we warmly invite you to celebrate our wedding and
-          share in this beautiful day with us.
-        </p>
-        <p class="hero-date">December 18, 2026</p>
-        <p class="hero-place">Lynwood, California</p>
-      </div>
-    </header>
-
-    <div class="section-divider" aria-hidden="true">
-      <img src="eucalyptus-divider.png" alt="" />
+      <button
+        id="sealButton"
+        class="seal-button"
+        type="button"
+        aria-label="Open invitation"
+      ></button>
     </div>
 
-    <section class="card">
-      <h2>Countdown</h2>
-      <div id="countdown" class="countdown"></div>
-    </section>
-
-    <div class="section-divider" aria-hidden="true">
-      <img src="eucalyptus-divider.png" alt="" />
+    <div id="cascadeLayer" class="cascade-layer" aria-hidden="true">
+      <img src="transition-cascade.png" alt="" class="cascade-image" />
+      <div id="fallingFlowers" class="falling-flowers"></div>
     </div>
 
-    <section class="card">
-      <h2>Location</h2>
-      <p class="location-name">11011 Louise Ave</p>
-      <p class="location-address">
-        11011 Louise Ave<br />
-        Lynwood, CA 90262
-      </p>
-
-      <div class="location-actions">
-        <a
-          class="btn small-btn"
-          href="https://www.google.com/maps/search/?api=1&query=11011+Louise+Ave+Lynwood+CA+90262"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Open Map
-        </a>
-      </div>
-
-      <div class="map-embed">
-        <iframe
-          src="https://www.google.com/maps?q=11011+Louise+Ave+Lynwood+CA+90262&output=embed"
-          width="100%"
-          height="260"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
-      </div>
-    </section>
-
-    <div class="section-divider" aria-hidden="true">
-      <img src="eucalyptus-divider.png" alt="" />
-    </div>
-
-    <section class="card">
-      <h2>Schedule</h2>
-      <ul>
-        <li>4:00 PM – Ceremony</li>
-        <li>5:00 PM – Cocktail Hour</li>
-        <li>6:00 PM – Dinner</li>
-        <li>8:00 PM – Dancing</li>
-      </ul>
-    </section>
-
-    <div class="section-divider" aria-hidden="true">
-      <img src="eucalyptus-divider.png" alt="" />
-    </div>
-
-    <section class="card last-card">
-      <h2>FAQ</h2>
-      <details>
-        <summary>Can I bring a guest?</summary>
-        <p>Please check your invitation details.</p>
-      </details>
-      <details>
-        <summary>What should I wear?</summary>
-        <p>Elegant attire in earthy tones.</p>
-      </details>
-    </section>
-  </main>
-
-  <button id="musicToggle" class="music-toggle paused" type="button" aria-label="Play music">
-    ♫
-  </button>
-
-  <audio id="inviteMusic" loop preload="auto">
-    <source src="music.mp3" type="audio/mpeg" />
-  </audio>
-
-  <script src="script.js"></script>
-</body>
-</html>
+    <div id="whiteFlash" class="white-flash" aria-hidden="true"></div>
+  </div>
+</section>
